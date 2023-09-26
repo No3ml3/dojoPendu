@@ -5,13 +5,13 @@ import "./App.css";
 function App() {
   const findName = "elephant";
   let wordArray = findName.split("");
-  let underscoreWord = "_ ".repeat(wordArray.length);
   let index = 0;
   const [letter, setLetter] = useState("");
   const [letters, setLetters] = useState([]);
+  const [underscoreWord, setUnderscoreWord] = useState("_".repeat(wordArray.length));
 
   const verifcation = () => {
-    wordArray.includes(letter)
+    wordArray.includes(letter);
   };
 
   const changeResult = () => {
@@ -20,15 +20,13 @@ function App() {
 
     for (let i = 0; i < matches.length; i++) {
       index = wordArray.indexOf(letter);
-      wordArray = wordArray.splice(index, 1, ".");
-      underscoreWord = underscoreWord
-        .split("")
-        .splice(index, 1, letter)
-        .join("");
 
-      console.log({index});
-      console.log('wordarray: ' + wordArray);
-      console.log('underscoreWord: ' + underscoreWord);
+      wordArray.splice(index, 1, ".");
+      setUnderscoreWord(underscoreWord.split("").splice(index, 1, letter).join(''));
+
+      console.log({ letter });
+      console.log({ index });
+
     }
   };
 
